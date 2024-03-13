@@ -1,12 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import { App } from './app';
-import { AdaptivityProvider, ConfigProvider } from '@vkontakte/vkui';
-import '@vkontakte/vkui/dist/vkui.css';
+import { CssBaseline } from '@mui/material';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ConfigProvider appearance="light">
-    <AdaptivityProvider>
-      <App />
-    </AdaptivityProvider>
-  </ConfigProvider>,
+  <>
+    <CssBaseline />
+    <App />
+  </>,
 );
