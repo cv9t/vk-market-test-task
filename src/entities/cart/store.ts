@@ -39,6 +39,14 @@ class CartStore {
     return this.cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   }
 
+  get itemSummaryInfo(): { title: string; quantity: number; totalPrice: number }[] {
+    return this.cartItems.map((item) => ({
+      title: item.product.title,
+      quantity: item.quantity,
+      totalPrice: item.product.price * item.quantity,
+    }));
+  }
+
   async loadCart(): Promise<void> {
     this.setIsLoaded(false);
     this.setError(null);
