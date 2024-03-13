@@ -8,13 +8,17 @@ export const CartSummary: FC = observer(() => (
   <div>
     <Typography variant="h6">Итоговая сумма:</Typography>
     <Typography gutterBottom>{cartStore.totalPrice} руб.</Typography>
-    <Typography variant="h6">Итоговая сумма по всем заказам:</Typography>
+    <Typography variant="h6">Итоговая сумма по всем товарам:</Typography>
     <Stack spacing={1}>
-      {cartStore.itemSummaryInfo.map((item) => (
-        <Typography key={item.title}>
-          {item.title} ({item.quantity} шт.) - {item.totalPrice} руб.
-        </Typography>
-      ))}
+      {cartStore.isEmpty ? (
+        <Typography>В корзине отсутствуют товары</Typography>
+      ) : (
+        cartStore.itemSummaryInfo.map((item) => (
+          <Typography key={item.title}>
+            {item.title} ({item.quantity} шт.) - {item.totalPrice} руб.
+          </Typography>
+        ))
+      )}
     </Stack>
   </div>
 ));
